@@ -97,14 +97,14 @@
 <meta property="og:description" content="（本次将每个solr节点安装在每台linux系统的/usr/local/solrcloud下）1.解压tomcat1tar -zxvf apache-tomcat-7.0.47 -C /usr/local/solrcloud
 2.cd /usr/local/solrcloud&amp;nbsp;mv apache-tomcat-7.0.47 tomcat(改名，为了方便)
 3.解压solr,得到solr-">
-<meta property="og:image" content="http://yoursite.com/2017/02/18/solr集群搭建/solrhomeconf.jpg">
-<meta property="og:updated_time" content="2017-02-19T16:18:27.935Z">
+<meta property="og:image" content="http://yoursite.com/2017/02/18/solr集群搭建/solrhomeconf.PNG">
+<meta property="og:updated_time" content="2017-02-19T16:21:54.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="solr集群搭建">
 <meta name="twitter:description" content="（本次将每个solr节点安装在每台linux系统的/usr/local/solrcloud下）1.解压tomcat1tar -zxvf apache-tomcat-7.0.47 -C /usr/local/solrcloud
 2.cd /usr/local/solrcloud&amp;nbsp;mv apache-tomcat-7.0.47 tomcat(改名，为了方便)
 3.解压solr,得到solr-">
-<meta name="twitter:image" content="http://yoursite.com/2017/02/18/solr集群搭建/solrhomeconf.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/02/18/solr集群搭建/solrhomeconf.PNG">
 
 
 
@@ -394,7 +394,7 @@
 <p>6.将solr-4.10.3/example/lib/ext目录下的所有jar包拷贝到tomcat/webapps/solr工程的lib目录下，这些jar包都是与日志相关的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp * /usr/local/solrcloud/tomcat/webapps/solr/WEB-INF/lib/</div></pre></td></tr></table></figure></p>
 <p>7.创建solrhome<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-cd solr-4.10.3/example/</div><div class="line">-cp solr /usr/local/solrcloud/solrhome</div></pre></td></tr></table></figure></p>
 <p>8.在solr服务器上配置solrhome的位置。需要修改tomcat/webapps/solr工程的web.xml文件。找到<code>&lt;env-entry&gt;</code>节点，打开注释，配置如下(填写你实际solrhome的路径)：</p>
-<p><img src="/2017/02/18/solr集群搭建/solrhomeconf.jpg" alt=""></p>
+<p><img src="/2017/02/18/solr集群搭建/solrhomeconf.PNG" alt=""></p>
 <p>9.启动tomcat，访问<code>192.168.1.114:8080/solr</code>(填写你实际的linux系统ip)</p>
 <p>10.配置中文分析器IK Analyzer。下载地址：<a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ik-analyzer/IKAnalyzer2012_u6.zip" target="_blank" rel="external">https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ik-analyzer/IKAnalyzer2012_u6.zip</a>。</p>
 <p>解压将得到的IKAnalyzer2012_u6.jar上传到tomcat/webapps/solr工程的lib目录下。</p>
@@ -447,8 +447,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/19/linux命令总结/" rel="prev" title="linuxx命令总结">
-                linuxx命令总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/02/19/linux命令总结/" rel="prev" title="linux命令总结">
+                linux命令总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -523,7 +523,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -532,7 +532,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
