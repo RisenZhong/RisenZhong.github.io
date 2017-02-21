@@ -378,7 +378,7 @@
       
         
           
-            <p>1.rsync同步文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rsync -avz [file path] [hostname]:[target path]</div><div class="line">eg:rsync -avz /usr/local/test slave:/usr/local/test</div></pre></td></tr></table></figure></p>
+            <p>1.rsync同步文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rsync -avz [file path] [hostname]:[target path]</div><div class="line">eg:rsync -avz /usr/local/test slave:/usr/local/</div></pre></td></tr></table></figure></p>
 <p>2.scp同步文件</p>
 <p>3.gz格式解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf test.gz -C [target path]</div></pre></td></tr></table></figure></p>
 <p>会在目标路径下生成一个与源文件名相同的目录</p>
@@ -561,6 +561,13 @@
 <p>10.配置中文分析器IK Analyzer。下载地址：<a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ik-analyzer/IKAnalyzer2012_u6.zip" target="_blank" rel="external">https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ik-analyzer/IKAnalyzer2012_u6.zip</a>。</p>
 <p>解压将得到的IKAnalyzer2012_u6.jar上传到tomcat/webapps/solr工程的lib目录下。</p>
 <p>然后，需要把IKAnalyzer的扩展词典、停用词词典、配置文件上传到solr工程的classpath。文件下载地址：<a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ik-analyzer/IK%20Analyzer%202012_u6_source.rar" target="_blank" rel="external">https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ik-analyzer/IK%20Analyzer%202012_u6_source.rar</a>。具体操作为在tomcat/webapps/solr/WEB-INF/下新建文件夹classes，将IKAnalyzer.cfg.xml、stopword.dic、ext.dic文件上传到此文件夹</p>
+<p>11.配置schema.xml</p>
+<p>修改solrhome下的schema.xml,配置中文分析器。<br><img src="/2017/02/18/solr集群搭建/fieldtype.PNG" alt=""><br>配置业务字段。在上面配置的``<fieldtype>下配置。最终shcema.xml配置如下：<br><img src="/2017/02/18/solr集群搭建/schema.PNG" alt=""></fieldtype></p>
+<p>12.将solr配置文件上传到zookeeper。</p>
+<p>进入<code>/usr/local/src/solr-4.10.3/example/scripts/cloud-scripts</code>目录，执行此目录下的zkcli.sh即可上传配置文件，命令如下(-zkhost后面跟的为zookeeper集群的ip的客户端端口，-confdir后面填写你的solr节点的solrhome的配置文件的路径，-confname后面为上传到zookeeper后在配置文件在zookeeper中的保存的文件夹的名字)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./zkcli.sh -zkhost 192.168.1.114:2181,192.168.1.115:2181,192.168.1.116:2181 -cmd upconfig -confdir /usr/local/solrcloud/solrhome/collection1/conf -confname myconf</div></pre></td></tr></table></figure></p>
+<p>13.修改solrhome下的solr.xml文件，配置solr节点的ip和端口号。<br><img src="/2017/02/18/solr集群搭建/solrcloud.PNG" alt=""></p>
+<p>14.修改每一个solr实例的tomcat的catalina.sh文件。进入<code>/usr/local/solrcloud/tomcat/bin/</code>目录，编辑catalina.sh加入如下配置<br><img src="/2017/02/18/solr集群搭建/javaopts.PNG" alt=""></p>
+<p>15.solr集群分片。运行zookeeper和solr集群，在浏览器下执行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://192.168.1.114:8080/solr/admin/collections?action=CREATE&amp;name=collection2&amp;numShards=2&amp;replicationFactor=2</div></pre></td></tr></table></figure></p>
 
           
         
