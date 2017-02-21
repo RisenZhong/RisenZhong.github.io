@@ -378,12 +378,17 @@
       
         
           
-            <p>1.rsync同步文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rsync -avz [file path] [hostname]:[target path]</div><div class="line">eg:rsync -avz /usr/local/test slave:/usr/local/</div></pre></td></tr></table></figure></p>
-<p>2.scp同步文件</p>
-<p>3.gz格式解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf test.gz -C [target path]</div></pre></td></tr></table></figure></p>
-<p>会在目标路径下生成一个与源文件名相同的目录</p>
-
-          
+          1.rsync同步文件12rsync -avz [file path] [hostname]:[target path]eg:rsync -avz /usr/local/test slave:/usr/local/
+2.scp同步文件
+3.gz格式解压1tar -zxvf test.gz -C [t
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/19/linux命令总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -545,31 +550,16 @@
       
         
           
-            <p>（本次将每个solr节点安装在每台linux系统的/usr/local/solrcloud下）<br>1.解压tomcat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf apache-tomcat-7.0.47 -C /usr/local/solrcloud</div></pre></td></tr></table></figure></p>
-<p>2.cd /usr/local/solrcloud<br>&nbsp;mv apache-tomcat-7.0.47 tomcat(改名，为了方便)</p>
-<p>3.解压solr,得到solr-4.10.3目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxvf solr-4.10.3.tgz.tgz</div></pre></td></tr></table></figure></p>
-<p>4.将solr-4.10.3/dist/solr-4.10.3.war拷贝到tomcat的webapps下，并改名为solr.war<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/src/solr-4.10.3/dist</div><div class="line">cp solr-4.10.3.war /usr/local/solrcloud/tomcat/webapps/solr.war</div></pre></td></tr></table></figure></p>
-<p>5.解压solr.war(启动tomcat自动解压)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/solrcloud/tomcat/bin</div><div class="line">./startup.sh</div></pre></td></tr></table></figure></p>
-<p>查看tomcat启动日志:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail -f tomcat/logs/catalina.out</div></pre></td></tr></table></figure></p>
-<p>关闭tomcat:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tomcat/bin/shutdown.sh</div></pre></td></tr></table></figure></p>
-<p>将tomcat/webapps下的solr.war删除。注意要先将tomcat关闭再删，如果不关，删除solr.war会将solr.war解压产生的solr文件夹一起删掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf solr.war</div></pre></td></tr></table></figure></p>
-<p>6.将solr-4.10.3/example/lib/ext目录下的所有jar包拷贝到tomcat/webapps/solr工程的lib目录下，这些jar包都是与日志相关的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp * /usr/local/solrcloud/tomcat/webapps/solr/WEB-INF/lib/</div></pre></td></tr></table></figure></p>
-<p>7.创建solrhome<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-cd solr-4.10.3/example/</div><div class="line">-cp solr /usr/local/solrcloud/solrhome</div></pre></td></tr></table></figure></p>
-<p>8.在solr服务器上配置solrhome的位置。需要修改tomcat/webapps/solr工程的web.xml文件。找到<code>&lt;env-entry&gt;</code>节点，打开注释，配置如下(填写你实际solrhome的路径)：</p>
-<p><img src="/2017/02/18/solr集群搭建/solrhomeconf.PNG" alt=""></p>
-<p>9.启动tomcat，访问<code>192.168.1.114:8080/solr</code>(填写你实际的linux系统ip)</p>
-<p>10.配置中文分析器IK Analyzer。下载地址：<a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ik-analyzer/IKAnalyzer2012_u6.zip" target="_blank" rel="external">https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ik-analyzer/IKAnalyzer2012_u6.zip</a>。</p>
-<p>解压将得到的IKAnalyzer2012_u6.jar上传到tomcat/webapps/solr工程的lib目录下。</p>
-<p>然后，需要把IKAnalyzer的扩展词典、停用词词典、配置文件上传到solr工程的classpath。文件下载地址：<a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ik-analyzer/IK%20Analyzer%202012_u6_source.rar" target="_blank" rel="external">https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ik-analyzer/IK%20Analyzer%202012_u6_source.rar</a>。具体操作为在tomcat/webapps/solr/WEB-INF/下新建文件夹classes，将IKAnalyzer.cfg.xml、stopword.dic、ext.dic文件上传到此文件夹</p>
-<p>11.配置schema.xml</p>
-<p>修改solrhome下的schema.xml,配置中文分析器。<br><img src="/2017/02/18/solr集群搭建/fieldtype.PNG" alt=""><br>配置业务字段。在上面配置的``<fieldtype>下配置。最终shcema.xml配置如下：<br><img src="/2017/02/18/solr集群搭建/schema.PNG" alt=""></fieldtype></p>
-<p>12.将solr配置文件上传到zookeeper。</p>
-<p>进入<code>/usr/local/src/solr-4.10.3/example/scripts/cloud-scripts</code>目录，执行此目录下的zkcli.sh即可上传配置文件，命令如下(-zkhost后面跟的为zookeeper集群的ip的客户端端口，-confdir后面填写你的solr节点的solrhome的配置文件的路径，-confname后面为上传到zookeeper后在配置文件在zookeeper中的保存的文件夹的名字)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./zkcli.sh -zkhost 192.168.1.114:2181,192.168.1.115:2181,192.168.1.116:2181 -cmd upconfig -confdir /usr/local/solrcloud/solrhome/collection1/conf -confname myconf</div></pre></td></tr></table></figure></p>
-<p>13.修改solrhome下的solr.xml文件，配置solr节点的ip和端口号。<br><img src="/2017/02/18/solr集群搭建/solrcloud.PNG" alt=""></p>
-<p>14.修改每一个solr实例的tomcat的catalina.sh文件。进入<code>/usr/local/solrcloud/tomcat/bin/</code>目录，编辑catalina.sh加入如下配置<br><img src="/2017/02/18/solr集群搭建/javaopts.PNG" alt=""></p>
-<p>15.solr集群分片。运行zookeeper和solr集群，在浏览器下执行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://192.168.1.114:8080/solr/admin/collections?action=CREATE&amp;name=collection2&amp;numShards=2&amp;replicationFactor=2</div></pre></td></tr></table></figure></p>
-
-          
+          （本次将每个solr节点安装在每台linux系统的/usr/local/solrcloud下）1.解压tomcat1tar -zxvf apache-tomcat-7.0.47 -C /usr/local/solrcloud
+2.cd /usr/local/solrcloud&nbsp;mv apa
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/18/solr集群搭建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -731,47 +721,26 @@
       
         
           
-            <p>&emsp;&emsp;Spring在TransactionDefinition接口中规定了7种类型的事务串播行为，用来规定事务方法和事务方法发生相互调用时，事务将如何传播。</p>
-<table>
-<thead>
-<tr>
-<th>传播行为</th>
-<th>说明 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PROPAGATION_REQUIRED</td>
-<td>如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。</td>
-</tr>
-<tr>
-<td>PROPAGATION_SUPPORTS</td>
-<td>支持当前事务，如果当前没有事务，就以非事务方式执行。</td>
-</tr>
-<tr>
-<td>PROPAGATION_MANDATORY</td>
-<td>使用当前的事务，如果当前没有事务，就抛出异常。</td>
-</tr>
-<tr>
-<td>PROPAGATION_REQUIRES_NEW</td>
-<td>新建事务，如果当前存在事务，把当前事务挂起。</td>
-</tr>
-<tr>
-<td>PROPAGATION_NOT_SUPPORTED</td>
-<td>以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</td>
-</tr>
-<tr>
-<td>PROPAGATION_NEVER</td>
-<td>以非事务方式执行，如果当前存在事务，则抛出异常。</td>
-</tr>
-<tr>
-<td>PROPAGATION_NESTED</td>
-<td>如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</td>
-</tr>
-</tbody>
-</table>
+          &emsp;&emsp;Spring在TransactionDefinition接口中规定了7种类型的事务串播行为，用来规定事务方法和事务方法发生相互调用时，事务将如何传播。
 
-          
+
+
+传播行为
+说明 
+
+
+
+
+PROPAGATION_REQUIRED
+如果当前没有事务，就新建一个事务，如果已经存在一个
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/17/事务的传播行为/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -933,12 +902,17 @@
       
         
           
-            <p>1.集群环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">三台linux虚拟机</div><div class="line">系统: centos 6.3</div><div class="line">jdk 1.7</div><div class="line">zookeeper 3.4.6</div></pre></td></tr></table></figure></p>
-<p>2.从官网下载安装包，用ftp上传到linux系统，官网下载地址<a href="http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">zookeeper 3.4.6</a></p>
-<p>3.解压缩tar -zxvf zookeeper-3.4.6.tar.gz -C /usr/local/zookeeper</p>
-<p>4.</p>
-
-          
+          1.集群环境1234三台linux虚拟机系统: centos 6.3jdk 1.7zookeeper 3.4.6
+2.从官网下载安装包，用ftp上传到linux系统，官网下载地址zookeeper 3.4.6
+3.解压缩tar -zxvf zookeeper-3.4.6.tar.gz -C /usr
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/16/zookeeper集群搭建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1100,27 +1074,34 @@
       
         
           
-            <p>1.链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[google](http:www.google.com)</div></pre></td></tr></table></figure></p>
-<p><a href="http:www.google.com" target="_blank" rel="external">google</a></p>
-<p>2.表格</p>
-<table>
-<thead>
-<tr>
-<th>aaa</th>
-<th>bbb</th>
-<th>ccc</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>aaa</td>
-<td>bbb</td>
-<td>ccc</td>
-</tr>
-</tbody>
-</table>
+          1.链接1[google](http:www.google.com)
+google
+2.表格
+
+
+
+aaa
+bbb
+ccc
+
+
+
+
+aaa
+bbb
+ccc
+
+
+
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/16/markdown语法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
