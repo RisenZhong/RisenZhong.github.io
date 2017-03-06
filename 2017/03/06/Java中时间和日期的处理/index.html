@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="时间处理," />
 
 
 
@@ -87,13 +87,36 @@
 
 
 
+<meta name="description" content="####1.java中处理时间日期的类java中用于时间和日期相关的类主要有：
+
+Date类
+Calendar类
+DateFormat类
+
+&amp;emsp;&amp;emsp;在JDK 1.1之前，Date类有两个其他的函数。它允许把日期解释为年、月、日、小时、分钟和秒值。它也允许格式化和解析日期字符串。不过，这些函数的API不易于实现国际化。从JDK1.1开始，应该使用Calendar类实现日期和时间字段之">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中时间和日期的处理">
 <meta property="og:url" content="http://yoursite.com/2017/03/06/Java中时间和日期的处理/index.html">
 <meta property="og:site_name" content="Eason's blog">
-<meta property="og:updated_time" content="2017-03-06T06:43:34.159Z">
+<meta property="og:description" content="####1.java中处理时间日期的类java中用于时间和日期相关的类主要有：
+
+Date类
+Calendar类
+DateFormat类
+
+&amp;emsp;&amp;emsp;在JDK 1.1之前，Date类有两个其他的函数。它允许把日期解释为年、月、日、小时、分钟和秒值。它也允许格式化和解析日期字符串。不过，这些函数的API不易于实现国际化。从JDK1.1开始，应该使用Calendar类实现日期和时间字段之">
+<meta property="og:image" content="http://yoursite.com/2017/03/06/Java中时间和日期的处理/tran.PNG">
+<meta property="og:updated_time" content="2017-03-06T10:43:32.392Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中时间和日期的处理">
+<meta name="twitter:description" content="####1.java中处理时间日期的类java中用于时间和日期相关的类主要有：
+
+Date类
+Calendar类
+DateFormat类
+
+&amp;emsp;&amp;emsp;在JDK 1.1之前，Date类有两个其他的函数。它允许把日期解释为年、月、日、小时、分钟和秒值。它也允许格式化和解析日期字符串。不过，这些函数的API不易于实现国际化。从JDK1.1开始，应该使用Calendar类实现日期和时间字段之">
+<meta name="twitter:image" content="http://yoursite.com/2017/03/06/Java中时间和日期的处理/tran.PNG">
 
 
 
@@ -304,6 +327,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -350,7 +395,27 @@
       
 
       
-        
+        <p>####1.java中处理时间日期的类<br>java中用于时间和日期相关的类主要有：</p>
+<ul>
+<li>Date类</li>
+<li>Calendar类</li>
+<li>DateFormat类</li>
+</ul>
+<p>&emsp;&emsp;在JDK 1.1之前，<code>Date</code>类有两个其他的函数。它允许把日期解释为年、月、日、小时、分钟和秒值。它也允许格式化和解析日期字符串。不过，这些函数的API不易于实现国际化。从JDK1.1开始，应该使用<code>Calendar</code>类实现日期和时间字段之间的转换，使用<code>DateFormat</code>类来格式化和解析日期字符串。<code>Date</code>中的相应方法已经废弃。<br>&emsp;&emsp;在日常开发我们可能还会用到<code>Long</code>、<code>String</code>来表示时间日期。</p>
+<p>在<code>Date</code>类所有可以接受或返回年、月、日期、小时、分钟和秒值的方法中，将使用下面的表示形式：</p>
+<ul>
+<li>年份 y 由整数 y - 1900 表示。  </li>
+<li>月份由从 0 至 11 的整数表示；0 是一月、1 是二月等等；因此 11 是十二月。  </li>
+<li>日期（一月中的某天）按通常方式由整数 1 至 31 表示。  </li>
+<li>小时由从 0 至 23 的整数表示。因此，从午夜到 1 a.m. 的时间是 0 点，从中午到 1 p.m. 的时间是 12 点。  </li>
+<li>分钟按通常方式由 0 至 59 的整数表示。  </li>
+<li>秒由0至61的整数表示；值60和61只对闰秒发生，尽管那样，也只用在实际正确跟踪闰秒的 Java 实现中。于按当前引入闰秒的方式，两个闰秒在同一分钟内发生是极不可能的，但此规范遵循 ISO C 的日期和时间约定。</li>
+</ul>
+<p>在所有情形中，针对这些目的赋予方法的参数不需要在指定的范围内；例如，可以把日期指定为 1 月 32 日，并把它解释为 2 月 1 日的相同含义。</p>
+<p>(以上参考JDK官方文档)</p>
+<p>####2.时间处理各类之间的转换<br>当需要<code>Date</code>类和字符串之间进行相互转换时，可以使用<code>SimpleDateFormat</code>类的<code>format()</code>和<code>parse()</code>方法。当需要对时间进行计算操作时，将<code>Date</code>转换成<code>Calendar</code>后再计算。转换流程图如下：<br><img src="/2017/03/06/Java中时间和日期的处理/tran.PNG" alt=""></p>
+<p>####3.使用示例<br>需求：设定女朋友的生日，并在提前2个星期的星期六提醒。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Reminder</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException </span>&#123;</div><div class="line"></div><div class="line">        <span class="comment">//1.设定生日--&gt;String</span></div><div class="line">        String gfBirthday = <span class="string">"2017-8-23"</span>;</div><div class="line"></div><div class="line">        <span class="comment">//2.将生日转换为Date类型</span></div><div class="line">        SimpleDateFormat sdf=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>);</div><div class="line">        Date date = sdf.parse(gfBirthday);</div><div class="line"></div><div class="line">        <span class="comment">//3.计算提醒的日期</span></div><div class="line">        Calendar cal=<span class="keyword">new</span> GregorianCalendar();<span class="comment">//初始化Calendar对象</span></div><div class="line">        cal.setTime(date);<span class="comment">//将Date对象的时间设置为Calendar对象的时间</span></div><div class="line">        cal.add(Calendar.WEEK_OF_MONTH,-<span class="number">2</span>);<span class="comment">//提前两周</span></div><div class="line">        cal.set(Calendar.DAY_OF_WEEK,Calendar.SATURDAY);<span class="comment">//设置为那一周的周六</span></div><div class="line">        Date remindTime = cal.getTime();</div><div class="line"></div><div class="line">        <span class="comment">//4.将提醒时间转为String</span></div><div class="line">        String str=sdf.format(remindTime);</div><div class="line"></div><div class="line">        System.out.print(str);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -370,6 +435,12 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/时间处理/" rel="tag"># 时间处理</a>
+          
+        </div>
       
 
       
@@ -453,7 +524,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -462,7 +533,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -471,7 +542,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
