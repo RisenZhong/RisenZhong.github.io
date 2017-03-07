@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/03/07/Java多线程方法总结/res1.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/03/07/Java多线程方法总结/res2.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/03/07/Java多线程方法总结/res3.PNG">
-<meta property="og:updated_time" content="2017-03-07T07:37:39.588Z">
+<meta property="og:updated_time" content="2017-03-07T07:45:45.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程方法总结">
 <meta name="twitter:description" content="1.join方法join方法有三种重载形式：123void join()  //主线程等待子线程执行完毕后再执行void join(long mills)  //主线程等待子线程，等待的时间为 mills毫秒void join(long mills,int nanos)  //主线程等待子线程，等待的时间为 millis 毫秒 + nanos 纳秒。
@@ -413,6 +413,7 @@
 </ol>
 <p>为什么wait()，notify()方法要和synchronized一起使用？<br>因为<code>wait()</code>方法是通知当前线程等待并释放对象锁，<code>notify()</code>方法是通知等待此对象锁的线程重新获得对象锁，然而，如果没有获得对象锁，<code>wait</code>方法和<code>notify</code>方法都是没有意义的，即必须先获得对象锁，才能对对象锁进行操作，于是，才必须把<code>notify</code>和<code>wait</code>方法写到synchronized方法或是<code>synchronized</code>代码块中了。</p>
 <h4 id="yield方法"><a href="#yield方法" class="headerlink" title="yield方法"></a>yield方法</h4><p>&emsp;&emsp;yield是Thread类的静态方法，当调用此方法时，会使当前线程从运行状态变为可运行状态。也就是说，当前线程会让出cpu资源，和其他可运行状态的线程一起重新争夺cpu资源。如果当前线程在yield之后又立即抢到了cpu资源，那么线程还是可以继续执行。这里不再代码演示。</p>
+<p>本文参考了：<br><a href="http://blog.csdn.net/FG2006/article/details/6393768" target="_blank" rel="external"></a><br><a href=""></a></p>
 
       
     </div>
