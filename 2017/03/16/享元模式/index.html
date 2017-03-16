@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="模式," />
 
 
 
@@ -87,13 +87,19 @@
 
 
 
+<meta name="description" content="享元模式是一种用来重用对象的模式，当系统中存在大量相似的对象时，可以使用这种模式，可以用这种模式减少对系统资源的占用。享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回，并在享元池中保存该新增对象。下面以一个用一个实例来具体分析。
+需求：模拟一个围棋游戏，使用对象池来存储黑子和白子两">
 <meta property="og:type" content="article">
 <meta property="og:title" content="享元模式">
 <meta property="og:url" content="http://yoursite.com/2017/03/16/享元模式/index.html">
 <meta property="og:site_name" content="Eason's blog">
-<meta property="og:updated_time" content="2017-03-16T12:15:46.991Z">
+<meta property="og:description" content="享元模式是一种用来重用对象的模式，当系统中存在大量相似的对象时，可以使用这种模式，可以用这种模式减少对系统资源的占用。享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回，并在享元池中保存该新增对象。下面以一个用一个实例来具体分析。
+需求：模拟一个围棋游戏，使用对象池来存储黑子和白子两">
+<meta property="og:updated_time" content="2017-03-16T15:02:08.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="享元模式">
+<meta name="twitter:description" content="享元模式是一种用来重用对象的模式，当系统中存在大量相似的对象时，可以使用这种模式，可以用这种模式减少对系统资源的占用。享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回，并在享元池中保存该新增对象。下面以一个用一个实例来具体分析。
+需求：模拟一个围棋游戏，使用对象池来存储黑子和白子两">
 
 
 
@@ -304,6 +310,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -350,7 +378,26 @@
       
 
       
-        
+        <p>享元模式是一种用来重用对象的模式，当系统中存在大量相似的对象时，可以使用这种模式，可以用这种模式减少对系统资源的占用。享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回，并在享元池中保存该新增对象。下面以一个用一个实例来具体分析。</p>
+<p>需求：模拟一个围棋游戏，使用对象池来存储黑子和白子两种封装对象。设计代码如下：</p>
+<ol>
+<li><p>定义棋子类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chessman</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String color;</div><div class="line">    <span class="comment">//用x和y表示棋子的位置</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> x;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> y;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Chessman</span><span class="params">(String color)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.color=color;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//获取棋子颜色</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getColor</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> color;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"棋子的颜色为："</span>+getColor());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义享元工厂类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChessmanBox</span> </span>&#123;</div><div class="line">    <span class="comment">//对象池</span></div><div class="line">    <span class="keyword">private</span> Map&lt;String,Chessman&gt; box ;</div><div class="line">    <span class="comment">//私有构造函数</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ChessmanBox</span><span class="params">()</span></span>&#123;</div><div class="line">        box=<span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//静态内部类持有享元工厂对象</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BoxHolder</span></span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> ChessmanBox chessmanBox=<span class="keyword">new</span> ChessmanBox();</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//单例获取享元工厂对象</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ChessmanBox <span class="title">getChessmanBox</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> BoxHolder.chessmanBox;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//获取棋子的方法</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Chessman <span class="title">getChessman</span><span class="params">(String color)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(color==<span class="keyword">null</span>||!color.equals(<span class="string">"white"</span>)||!color.equals(<span class="string">"black"</span>))</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"棋子颜色有误"</span>);</div><div class="line">        Chessman c=box.get(color);</div><div class="line">        <span class="keyword">if</span>(c==<span class="keyword">null</span>)&#123;</div><div class="line">            c=<span class="keyword">new</span> Chessman(color);</div><div class="line">            box.put(color,c);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> c;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这里通过IoDH单例获取享元工厂类的对象，有关单例模式的总结可以参考：<a href="https://risenzhong.github.io/2017/03/11/singleton/" target="_blank" rel="external">https://risenzhong.github.io/2017/03/11/singleton/</a></p>
+<ol>
+<li><p>定义棋子的操作对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">place</span><span class="params">(Chessman c,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">        System.out.println(c.getColor() + <span class="string">"to point("</span> + x + <span class="string">","</span>+y+<span class="string">")"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>客户端测试方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="comment">//玩家1</span></div><div class="line">        Player p1=<span class="keyword">new</span> Player();</div><div class="line">        <span class="comment">//玩家2</span></div><div class="line">        Player p2=<span class="keyword">new</span> Player();</div><div class="line">        <span class="comment">//玩家操作棋子</span></div><div class="line">        Random rand=<span class="keyword">new</span> Random(<span class="number">100</span>);</div><div class="line">        p1.place(<span class="keyword">new</span> Chessman(<span class="string">"white"</span>), rand.nextInt(), rand.nextInt());</div><div class="line">        p2.place(<span class="keyword">new</span> Chessman(<span class="string">"black"</span>), rand.nextInt(), rand.nextInt());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
       
     </div>
 
@@ -370,6 +417,12 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/模式/" rel="tag"># 模式</a>
+          
+        </div>
       
 
       
