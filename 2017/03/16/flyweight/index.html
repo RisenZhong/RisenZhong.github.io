@@ -95,13 +95,13 @@
 <meta property="og:site_name" content="Eason's blog">
 <meta property="og:description" content="享元模式是一种用来重用对象的模式，当系统中存在大量相似的对象时，可以用这种模式减少对系统资源的占用。享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回，并在享元池中保存该新增对象。下面以一个用一个实例来具体分析。
 需求：模拟一个围棋游戏，使用对象池来存储黑子和白子两种封装对象。设计代">
-<meta property="og:image" content="http://yoursite.com/2017/03/16/flyweight/res.png">
-<meta property="og:updated_time" content="2017-03-16T16:09:11.245Z">
+<meta property="og:image" content="http://yoursite.com/2017/03/16/flyweight/res.PNG">
+<meta property="og:updated_time" content="2017-03-16T16:22:55.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="享元模式">
 <meta name="twitter:description" content="享元模式是一种用来重用对象的模式，当系统中存在大量相似的对象时，可以用这种模式减少对系统资源的占用。享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回，并在享元池中保存该新增对象。下面以一个用一个实例来具体分析。
 需求：模拟一个围棋游戏，使用对象池来存储黑子和白子两种封装对象。设计代">
-<meta name="twitter:image" content="http://yoursite.com/2017/03/16/flyweight/res.png">
+<meta name="twitter:image" content="http://yoursite.com/2017/03/16/flyweight/res.PNG">
 
 
 
@@ -398,7 +398,7 @@
 <li><p>客户端测试方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="comment">//玩家1</span></div><div class="line">        Player p1=<span class="keyword">new</span> Player();</div><div class="line">        <span class="comment">//玩家2</span></div><div class="line">        Player p2=<span class="keyword">new</span> Player();</div><div class="line">        <span class="comment">//获取享元工厂</span></div><div class="line">        ChessmanBox cb = ChessmanBox.getChessmanBox();</div><div class="line">        <span class="comment">//玩家操作棋子</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">10</span>;i++) &#123;</div><div class="line">            System.out.println(<span class="string">"第"</span>+i+<span class="string">"回合"</span>);</div><div class="line">            p1.place(cb.getChessman(<span class="string">"white"</span>), (<span class="keyword">int</span>) (Math.random() * <span class="number">100</span>),  (<span class="keyword">int</span>) (Math.random() * <span class="number">100</span>));</div><div class="line">            p2.place(cb.getChessman(<span class="string">"black"</span>),  (<span class="keyword">int</span>) (Math.random() * <span class="number">100</span>),  (<span class="keyword">int</span>) (Math.random() * <span class="number">100</span>));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>测试结果如下：<br><img src="/2017/03/16/flyweight/res.png" alt=""></p>
+<li><p>测试结果如下：<br><img src="/2017/03/16/flyweight/res.PNG" alt=""></p>
 </li>
 </ol>
 
