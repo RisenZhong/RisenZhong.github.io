@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="spring,事务," />
+  <meta name="keywords" content="模式," />
 
 
 
@@ -87,61 +87,19 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;Spring在TransactionDefinition接口中规定了7种类型的事务串播行为，用来规定事务方法和事务方法发生相互调用时，事务将如何传播。
-
-
-
-传播行为
-说明 
-
-
-
-
-PROPAGATION_REQUIRED
-如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。
-
-
-PROPAGATION_SUPPORTS
-支持当前">
+<meta name="description" content="享元模式是一种用来重用对象的模式，当系统中存在大量相似的对象时，可以用这种模式减少对系统资源的占用。享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回，并在享元池中保存该新增对象。下面以一个用一个实例来具体分析。
+需求：模拟一个围棋游戏，使用对象池来存储黑子和白子两种封装对象。设计代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="事务的传播行为">
-<meta property="og:url" content="http://yoursite.com/2017/02/17/事务的传播行为/index.html">
+<meta property="og:title" content="享元模式">
+<meta property="og:url" content="http://yoursite.com/2017/03/16/flyweight/index.html">
 <meta property="og:site_name" content="Eason's blog">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;Spring在TransactionDefinition接口中规定了7种类型的事务串播行为，用来规定事务方法和事务方法发生相互调用时，事务将如何传播。
-
-
-
-传播行为
-说明 
-
-
-
-
-PROPAGATION_REQUIRED
-如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。
-
-
-PROPAGATION_SUPPORTS
-支持当前">
-<meta property="og:updated_time" content="2017-02-17T03:52:41.834Z">
+<meta property="og:description" content="享元模式是一种用来重用对象的模式，当系统中存在大量相似的对象时，可以用这种模式减少对系统资源的占用。享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回，并在享元池中保存该新增对象。下面以一个用一个实例来具体分析。
+需求：模拟一个围棋游戏，使用对象池来存储黑子和白子两种封装对象。设计代">
+<meta property="og:updated_time" content="2017-03-16T15:29:22.721Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="事务的传播行为">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;Spring在TransactionDefinition接口中规定了7种类型的事务串播行为，用来规定事务方法和事务方法发生相互调用时，事务将如何传播。
-
-
-
-传播行为
-说明 
-
-
-
-
-PROPAGATION_REQUIRED
-如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。
-
-
-PROPAGATION_SUPPORTS
-支持当前">
+<meta name="twitter:title" content="享元模式">
+<meta name="twitter:description" content="享元模式是一种用来重用对象的模式，当系统中存在大量相似的对象时，可以用这种模式减少对系统资源的占用。享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回，并在享元池中保存该新增对象。下面以一个用一个实例来具体分析。
+需求：模拟一个围棋游戏，使用对象池来存储黑子和白子两种封装对象。设计代">
 
 
 
@@ -169,13 +127,13 @@ PROPAGATION_SUPPORTS
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/17/事务的传播行为/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/16/flyweight/"/>
 
 
 
 
 
-  <title> 事务的传播行为 | Eason's blog </title>
+  <title> 享元模式 | Eason's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -302,7 +260,7 @@ PROPAGATION_SUPPORTS
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/17/事务的传播行为/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/16/flyweight/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Eason">
@@ -326,7 +284,7 @@ PROPAGATION_SUPPORTS
             
             
               
-                事务的传播行为
+                享元模式
               
             
           </h1>
@@ -341,8 +299,8 @@ PROPAGATION_SUPPORTS
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-17T10:27:57+08:00">
-                2017-02-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-16T20:15:46+08:00">
+                2017-03-16
               </time>
             
 
@@ -364,8 +322,8 @@ PROPAGATION_SUPPORTS
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/spring/" itemprop="url" rel="index">
-                    <span itemprop="name">spring</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -382,8 +340,8 @@ PROPAGATION_SUPPORTS
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/17/事务的传播行为/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/17/事务的传播行为/" itemprop="commentCount"></span>
+                <a href="/2017/03/16/flyweight/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/flyweight/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -391,7 +349,7 @@ PROPAGATION_SUPPORTS
 
           
           
-             <span id="/2017/02/17/事务的传播行为/" class="leancloud_visitors" data-flag-title="事务的传播行为">
+             <span id="/2017/03/16/flyweight/" class="leancloud_visitors" data-flag-title="享元模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -420,45 +378,27 @@ PROPAGATION_SUPPORTS
       
 
       
-        <p>&emsp;&emsp;Spring在TransactionDefinition接口中规定了7种类型的事务串播行为，用来规定事务方法和事务方法发生相互调用时，事务将如何传播。</p>
-<table>
-<thead>
-<tr>
-<th>传播行为</th>
-<th>说明 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PROPAGATION_REQUIRED</td>
-<td>如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。</td>
-</tr>
-<tr>
-<td>PROPAGATION_SUPPORTS</td>
-<td>支持当前事务，如果当前没有事务，就以非事务方式执行。</td>
-</tr>
-<tr>
-<td>PROPAGATION_MANDATORY</td>
-<td>使用当前的事务，如果当前没有事务，就抛出异常。</td>
-</tr>
-<tr>
-<td>PROPAGATION_REQUIRES_NEW</td>
-<td>新建事务，如果当前存在事务，把当前事务挂起。</td>
-</tr>
-<tr>
-<td>PROPAGATION_NOT_SUPPORTED</td>
-<td>以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</td>
-</tr>
-<tr>
-<td>PROPAGATION_NEVER</td>
-<td>以非事务方式执行，如果当前存在事务，则抛出异常。</td>
-</tr>
-<tr>
-<td>PROPAGATION_NESTED</td>
-<td>如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</td>
-</tr>
-</tbody>
-</table>
+        <p>享元模式是一种用来重用对象的模式，当系统中存在大量相似的对象时，可以用这种模式减少对系统资源的占用。享元模式的核心在于享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回，并在享元池中保存该新增对象。下面以一个用一个实例来具体分析。</p>
+<p>需求：模拟一个围棋游戏，使用对象池来存储黑子和白子两种封装对象。设计代码如下：</p>
+<ol>
+<li><p>定义棋子类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chessman</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String color;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Chessman</span><span class="params">(String color)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.color=color;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//获取棋子颜色</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getColor</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> color;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义享元工厂类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChessmanBox</span> </span>&#123;</div><div class="line">    <span class="comment">//对象池</span></div><div class="line">    <span class="keyword">private</span> Map&lt;String,Chessman&gt; box ;</div><div class="line">    <span class="comment">//私有构造函数</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ChessmanBox</span><span class="params">()</span></span>&#123;</div><div class="line">        box=<span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//静态内部类持有享元工厂对象</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BoxHolder</span></span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> ChessmanBox chessmanBox=<span class="keyword">new</span> ChessmanBox();</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//单例获取享元工厂对象</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ChessmanBox <span class="title">getChessmanBox</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> BoxHolder.chessmanBox;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//获取棋子的方法</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Chessman <span class="title">getChessman</span><span class="params">(String color)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(color==<span class="keyword">null</span>||!color.equals(<span class="string">"white"</span>)||!color.equals(<span class="string">"black"</span>))</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"棋子颜色有误"</span>);</div><div class="line">        Chessman c=box.get(color);</div><div class="line">        <span class="keyword">if</span>(c==<span class="keyword">null</span>)&#123;</div><div class="line">            c=<span class="keyword">new</span> Chessman(color);</div><div class="line">            box.put(color,c);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> c;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这里通过IoDH单例获取享元工厂类的对象，有关单例模式的总结可以参考：<a href="https://risenzhong.github.io/2017/03/11/singleton/" target="_blank" rel="external">https://risenzhong.github.io/2017/03/11/singleton/</a></p>
+<ol>
+<li><p>定义棋子的操作对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">place</span><span class="params">(Chessman c,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">        System.out.println(c.getColor() + <span class="string">"to point("</span> + x + <span class="string">","</span>+y+<span class="string">")"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>客户端测试方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="comment">//玩家1</span></div><div class="line">        Player p1=<span class="keyword">new</span> Player();</div><div class="line">        <span class="comment">//玩家2</span></div><div class="line">        Player p2=<span class="keyword">new</span> Player();</div><div class="line">        <span class="comment">//获取享元工厂</span></div><div class="line">        ChessmanBox cb = ChessmanBox.getChessmanBox();</div><div class="line">        <span class="comment">//玩家操作棋子</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++) &#123;</div><div class="line">            p1.place(cb.getChessman(<span class="string">"white"</span>), (<span class="keyword">int</span>) Math.random() * <span class="number">100</span>, (<span class="keyword">int</span>) Math.random() * <span class="number">100</span>);</div><div class="line">            p2.place(cb.getChessman(<span class="string">"black"</span>), (<span class="keyword">int</span>) Math.random() * <span class="number">100</span>, (<span class="keyword">int</span>) Math.random() * <span class="number">100</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>成</p>
+</li>
+</ol>
 
       
     </div>
@@ -482,9 +422,7 @@ PROPAGATION_SUPPORTS
       
         <div class="post-tags">
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
-          
-            <a href="/tags/事务/" rel="tag"># 事务</a>
+            <a href="/tags/模式/" rel="tag"># 模式</a>
           
         </div>
       
@@ -497,8 +435,8 @@ PROPAGATION_SUPPORTS
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/16/zookeeper集群搭建/" rel="next" title="zookeeper集群搭建">
-                <i class="fa fa-chevron-left"></i> zookeeper集群搭建
+              <a href="/2017/03/16/享元模式/" rel="next" title="享元模式">
+                <i class="fa fa-chevron-left"></i> 享元模式
               </a>
             
           </div>
@@ -506,10 +444,6 @@ PROPAGATION_SUPPORTS
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/18/solr集群搭建/" rel="prev" title="solr集群搭建">
-                solr集群搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -535,8 +469,8 @@ PROPAGATION_SUPPORTS
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/17/事务的传播行为/"
-           data-title="事务的传播行为" data-url="http://yoursite.com/2017/02/17/事务的传播行为/">
+      <div class="ds-thread" data-thread-key="2017/03/16/flyweight/"
+           data-title="享元模式" data-url="http://yoursite.com/2017/03/16/flyweight/">
       </div>
     
   </div>
