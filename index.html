@@ -890,7 +890,7 @@
           
           (本文基于jdk8)
 1.JUC线程池架构线程池的架构图主要如下：
-其中Executers是工具类，主要用来创建线程池对象。Executers提供了创建线程池的几个主要静态方法如下：1234ExecutorService newCachedThreadPool()ExecutorService ne
+其中ThreadPoolExecutor是线程池的核心，提供了线程池的实现。ScheduledThreadPoolExecutor继承了ThreadPoolExecutor，并另外提供一些调度方法以支持定时和周期任务。Execute
           ...
           <!--noindex-->
           <div class="post-button text-center">
