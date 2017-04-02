@@ -159,7 +159,7 @@
 非
 ~
 包括符号位，全部">
-<meta property="og:updated_time" content="2017-04-02T13:42:38.020Z">
+<meta property="og:updated_time" content="2017-04-02T14:19:08.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二进制和位运算">
 <meta name="twitter:description" content="1.原码、反码和补码
@@ -526,8 +526,14 @@
 </tr>
 </tbody>
 </table>
-<h4 id="3-位运算应用"><a href="#3-位运算应用" class="headerlink" title="3.位运算应用"></a>3.位运算应用</h4><p><font color="red">1.判断int型变量<code>a</code>是奇数还是偶数</font><br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1=0 偶数<br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1=1 奇数  </p>
-<p><font color="red">2.2.  求平均值，比如有两个int类型变量x、y,首先要求x+y的和，再除以2，但是有可能x+y的结果会超过int的最大表示范围，这时可以采用位运算</font><br>&nbsp;&nbsp;&nbsp;&nbsp;(x&amp;y)+((x^y)&gt;&gt;1)</p>
+<h4 id="3-位运算应用"><a href="#3-位运算应用" class="headerlink" title="3.位运算应用"></a>3.位运算应用</h4><p><font color="red">1. 判断int型变量<code>a</code>是奇数还是偶数</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a &amp; 1 == 0; //偶数</div><div class="line">a &amp; 1 == 1; //奇数</div></pre></td></tr></table></figure></p>
+<p><font color="red">2. 求平均值，比如有两个int类型变量x、y,首先要求x+y的和，再除以2，但是有可能x+y的结果会超过int的最大表示范围，这时可以采用位运算</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(x &amp; y) + ((x ^ y) &gt;&gt; 1)</div></pre></td></tr></table></figure></p>
+<p><font color="red">3. 有两个int类型变量x、y,实现两数交换</font><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x ^= y; </div><div class="line">y ^= x; </div><div class="line">x ^= y;</div></pre></td></tr></table></figure></p>
+<p><font color="red">4. 求绝对值</font><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">abs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123; </div><div class="line">     <span class="keyword">int</span> y = x &gt;&gt; <span class="number">31</span> ; </div><div class="line">     <span class="keyword">return</span> (x+y)^y;   <span class="comment">//or:(x^y)-y</span></div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p><font color="red">5. 求x相反数</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(~x+1)</div></pre></td></tr></table></figure></p>
+<p><font color="red">6. a % 2 等价于 a &amp; 1</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a % 2 &lt;==&gt; a &amp; 1</div></pre></td></tr></table></figure></p>
+<p><font color="red">7. 判断int变量a、b符号是否相同</font><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(a ^ b) &gt; <span class="number">0</span> == <span class="keyword">true</span>;   <span class="comment">//符号相同</span></div><div class="line">(a ^ b) &gt; <span class="number">0</span> == <span class="keyword">false</span>;  <span class="comment">//符号不同</span></div></pre></td></tr></table></figure></p>
+<p><font color="red">8. 计算2的n次方</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2 &lt;&lt; ( n-1 )</div></pre></td></tr></table></figure></p>
 
       
     </div>
