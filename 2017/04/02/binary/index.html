@@ -101,7 +101,7 @@
 正数的原码、反码和补码都相同
 负数的反码==&amp;gt;原码的符号位不变，其余各位取反
 负数的补码==&amp;gt;反码+12.位运算(Java)名称|符号|运算规则—|—|—与|&amp;amp;|同为1时才为1，否则为0或|&amp;#124;|同为0时才为0，否则为1异或|^|相同为0，相异为1非|~|包括符号位，全部取反左移|&amp;lt;&amp;lt;|">
-<meta property="og:updated_time" content="2017-04-02T13:12:20.253Z">
+<meta property="og:updated_time" content="2017-04-02T13:15:31.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二进制与位运算">
 <meta name="twitter:description" content="1.原码、反码和补码
@@ -391,10 +391,8 @@
 <li>正数的原码首位为0，负数的原码首位为1，其余相同</li>
 <li>正数的原码、反码和补码都相同</li>
 <li>负数的反码==&gt;原码的符号位不变，其余各位取反</li>
-<li>负数的补码==&gt;反码+1<h4 id="2-位运算-Java"><a href="#2-位运算-Java" class="headerlink" title="2.位运算(Java)"></a>2.位运算(Java)</h4>名称|符号|运算规则<br>—|—|—<br>与|&amp;|同为1时才为1，否则为0<br>或|&#124;|同为0时才为0，否则为1<br>异或|^|相同为0，相异为1<br>非|~|包括符号位，全部取反<br>左移|&lt;&lt;|低位补0<br>右移|&gt;&gt;|正数高位补0，负数高位补1<br>无符号右移|&gt;&gt;&gt;|高位补0</li>
+<li>负数的补码==&gt;反码+1<h4 id="2-位运算-Java"><a href="#2-位运算-Java" class="headerlink" title="2.位运算(Java)"></a>2.位运算(Java)</h4>名称|符号|运算规则<br>—|—|—<br>与|&amp;|同为1时才为1，否则为0<br>或|&#124;|同为0时才为0，否则为1<br>异或|^|相同为0，相异为1<br>非|~|包括符号位，全部取反<br>左移|&lt;&lt;|低位补0<br>右移|&gt;&gt;|正数高位补0，负数高位补1<br>无符号右移|&gt;&gt;&gt;|高位补0<h4 id="3-位运算应用"><a href="#3-位运算应用" class="headerlink" title="3.位运算应用"></a>3.位运算应用</h4><font color="red">1.判断int型变量<code>a</code>是奇数还是偶数</font><br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1  = 0 偶数<br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1 =  1 奇数<br><font color="red">2.2.  求平均值，比如有两个int类型变量x、y,首先要求x+y的和，再除以2，但是有可能x+y的结果会超过int的最大表示范围，这时可以采用位运算</font><br>&nbsp;&nbsp;&nbsp;&nbsp;$$(x\&amp;y)+((x\^y)&gt;&gt;1)$$</li>
 </ul>
-<h4 id="3-位运算应用"><a href="#3-位运算应用" class="headerlink" title="3.位运算应用"></a>3.位运算应用</h4><p><font color="red">1.判断int型变量<code>a</code>是奇数还是偶数</font><br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1  = 0 偶数<br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1 =  1 奇数  </p>
-<p><font color="red">2.2.  求平均值，比如有两个int类型变量x、y,首先要求x+y的和，再除以2，但是有可能x+y的结果会超过int的最大表示范围，这时可以采用位运算</font><br>&nbsp;&nbsp;&nbsp;&nbsp;$$(x\&amp;y)+((x\^y)&gt;&gt;1)$$</p>
 
       
     </div>
