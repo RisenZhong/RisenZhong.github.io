@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -159,7 +159,7 @@
 非
 ~
 包括符号位，全部">
-<meta property="og:updated_time" content="2017-04-02T13:24:48.103Z">
+<meta property="og:updated_time" content="2017-04-02T13:34:53.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="binary">
 <meta name="twitter:description" content="1.原码、反码和补码
@@ -229,7 +229,7 @@
 
 
 
-  <title> binary | Eason's blog </title>
+  <title> binary | Eason's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -240,7 +240,7 @@
 
 
 
-  <script type="text/javascript">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><script type="text/javascript">
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -505,7 +505,7 @@
 </tbody>
 </table>
 <h4 id="3-位运算应用"><a href="#3-位运算应用" class="headerlink" title="3.位运算应用"></a>3.位运算应用</h4><p><font color="red">1.判断int型变量<code>a</code>是奇数还是偶数</font><br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1  = 0 偶数<br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1 =  1 奇数  </p>
-<p><font color="red">2.2.  求平均值，比如有两个int类型变量x、y,首先要求x+y的和，再除以2，但是有可能x+y的结果会超过int的最大表示范围，这时可以采用位运算</font><br>&nbsp;&nbsp;&nbsp;&nbsp;$$(x\&amp;y)+((x\^y)&gt;&gt;1)$$</p>
+<p><font color="red">2.2.  求平均值，比如有两个int类型变量x、y,首先要求x+y的和，再除以2，但是有可能x+y的结果会超过int的最大表示范围，这时可以采用位运算</font><br>&nbsp;&nbsp;&nbsp;&nbsp;$$(x&amp;y)+((x^y)&gt;&gt;1)$$</p>
 
       
     </div>
@@ -936,7 +936,24 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
