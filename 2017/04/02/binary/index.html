@@ -120,7 +120,7 @@
 
 非
 ~
-包括符号位，全">
+包括符号位，全部">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二进制和位运算">
 <meta property="og:url" content="http://yoursite.com/2017/04/02/binary/index.html">
@@ -158,8 +158,8 @@
 
 非
 ~
-包括符号位，全">
-<meta property="og:updated_time" content="2017-04-02T13:40:25.293Z">
+包括符号位，全部">
+<meta property="og:updated_time" content="2017-04-02T13:42:38.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二进制和位运算">
 <meta name="twitter:description" content="1.原码、反码和补码
@@ -195,7 +195,7 @@
 
 非
 ~
-包括符号位，全">
+包括符号位，全部">
 
 
 
@@ -474,8 +474,7 @@
       
 
       
-        <p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><br></script></p>
-<h4 id="1-原码、反码和补码"><a href="#1-原码、反码和补码" class="headerlink" title="1.原码、反码和补码"></a>1.原码、反码和补码</h4><ul>
+        <h4 id="1-原码、反码和补码"><a href="#1-原码、反码和补码" class="headerlink" title="1.原码、反码和补码"></a>1.原码、反码和补码</h4><ul>
 <li>正数的原码首位为0，负数的原码首位为1，其余相同</li>
 <li>正数的原码、反码和补码都相同</li>
 <li>负数的反码==&gt;原码的符号位不变，其余各位取反</li>
@@ -527,8 +526,8 @@
 </tr>
 </tbody>
 </table>
-<h4 id="3-位运算应用"><a href="#3-位运算应用" class="headerlink" title="3.位运算应用"></a>3.位运算应用</h4><p><font color="red">1.判断int型变量<code>a</code>是奇数还是偶数</font><br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1  = 0 偶数<br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1 =  1 奇数  </p>
-<p><font color="red">2.2.  求平均值，比如有两个int类型变量x、y,首先要求x+y的和，再除以2，但是有可能x+y的结果会超过int的最大表示范围，这时可以采用位运算</font><br>&nbsp;&nbsp;&nbsp;&nbsp;$$ (x&amp;y)+((x^y)&gt;&gt;1) $$</p>
+<h4 id="3-位运算应用"><a href="#3-位运算应用" class="headerlink" title="3.位运算应用"></a>3.位运算应用</h4><p><font color="red">1.判断int型变量<code>a</code>是奇数还是偶数</font><br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1=0 偶数<br>&nbsp;&nbsp;&nbsp;&nbsp;a&amp;1=1 奇数  </p>
+<p><font color="red">2.2.  求平均值，比如有两个int类型变量x、y,首先要求x+y的和，再除以2，但是有可能x+y的结果会超过int的最大表示范围，这时可以采用位运算</font><br>&nbsp;&nbsp;&nbsp;&nbsp;(x&amp;y)+((x^y)&gt;&gt;1)</p>
 
       
     </div>
