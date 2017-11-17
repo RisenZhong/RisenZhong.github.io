@@ -87,26 +87,17 @@
 
 
 
-<meta name="description" content="冒泡排序
-#####算法实现： 
-
-12345678910111213141516public static void bubbleSort(int[] a) &amp;#123;        int n = a.length;        boolean change = true;        for (int i = 0; i &amp;lt;= n - 2 &amp;amp;&amp;amp; change; i+">
+<meta name="description" content="冒泡排序算法实现：12345678910111213141516public static void bubbleSort(int[] a) &amp;#123;        int n = a.length;        boolean change = true;        for (int i = 0; i &amp;lt;= n - 2 &amp;amp;&amp;amp; change; i++) &amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法">
 <meta property="og:url" content="http://yoursite.com/2017/11/16/排序算法/index.html">
 <meta property="og:site_name" content="Eason's blog">
-<meta property="og:description" content="冒泡排序
-#####算法实现： 
-
-12345678910111213141516public static void bubbleSort(int[] a) &amp;#123;        int n = a.length;        boolean change = true;        for (int i = 0; i &amp;lt;= n - 2 &amp;amp;&amp;amp; change; i+">
+<meta property="og:description" content="冒泡排序算法实现：12345678910111213141516public static void bubbleSort(int[] a) &amp;#123;        int n = a.length;        boolean change = true;        for (int i = 0; i &amp;lt;= n - 2 &amp;amp;&amp;amp; change; i++) &amp;#123;">
 <meta property="og:image" content="http://yoursite.com/2017/11/16/排序算法/1.PNG">
-<meta property="og:updated_time" content="2017-11-17T03:32:32.391Z">
+<meta property="og:updated_time" content="2017-11-17T03:41:26.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
-<meta name="twitter:description" content="冒泡排序
-#####算法实现： 
-
-12345678910111213141516public static void bubbleSort(int[] a) &amp;#123;        int n = a.length;        boolean change = true;        for (int i = 0; i &amp;lt;= n - 2 &amp;amp;&amp;amp; change; i+">
+<meta name="twitter:description" content="冒泡排序算法实现：12345678910111213141516public static void bubbleSort(int[] a) &amp;#123;        int n = a.length;        boolean change = true;        for (int i = 0; i &amp;lt;= n - 2 &amp;amp;&amp;amp; change; i++) &amp;#123;">
 <meta name="twitter:image" content="http://yoursite.com/2017/11/16/排序算法/1.PNG">
 
 
@@ -386,14 +377,8 @@
       
 
       
-        <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><ul>
-<li>#####<font color="colorful">算法实现：</font> </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public static void bubbleSort(int[] a) &#123;</div><div class="line">        int n = a.length;</div><div class="line">        boolean change = true;</div><div class="line">        for (int i = 0; i &lt;= n - 2 &amp;&amp; change; i++) &#123;</div><div class="line">            change = false;</div><div class="line">            for (int j = n - 2; j &gt;= i; j--) &#123;</div><div class="line">                if (a[j + 1] &lt; a[j]) &#123;</div><div class="line">                    int temp = a[j];</div><div class="line">                    a[j] = a[j+1];</div><div class="line">                    a[j + 1] = temp;</div><div class="line">                    change = true;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>#####<font color="colorful">算法思路：</font> </li>
-</ul>
-<p>从数组中找到最小的元素放到<code>a[0]</code>，然后找到第二小的元素放到<code>a[1]</code>，以此类推。内层循环每次循环整个数组或者数组的一部分，通过两两比较，把最小的数冒泡到最前面。外层循环循环<code>n-1</code>次（<code>0</code>到<code>n-2</code>），第<code>1</code>次在<code>a[0]</code>得到最小的元素，第<code>2</code>次循环在<code>a[1]</code>得到第二小的元素….，第<code>n-1</code>次在<code>a[n-2]</code>得到倒数第二小的元素。</p>
+        <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><h5 id="算法实现："><a href="#算法实现：" class="headerlink" title="算法实现："></a><font color="colorful">算法实现：</font></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public static void bubbleSort(int[] a) &#123;</div><div class="line">        int n = a.length;</div><div class="line">        boolean change = true;</div><div class="line">        for (int i = 0; i &lt;= n - 2 &amp;&amp; change; i++) &#123;</div><div class="line">            change = false;</div><div class="line">            for (int j = n - 2; j &gt;= i; j--) &#123;</div><div class="line">                if (a[j + 1] &lt; a[j]) &#123;</div><div class="line">                    int temp = a[j];</div><div class="line">                    a[j] = a[j+1];</div><div class="line">                    a[j + 1] = temp;</div><div class="line">                    change = true;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h5 id="算法思路："><a href="#算法思路：" class="headerlink" title="算法思路："></a><font color="colorful">算法思路：</font></h5><p>从数组中找到最小的元素放到<code>a[0]</code>，然后找到第二小的元素放到<code>a[1]</code>，以此类推。内层循环每次循环整个数组或者数组的一部分，通过两两比较，把最小的数冒泡到最前面。外层循环循环<code>n-1</code>次（<code>0</code>到<code>n-2</code>），第<code>1</code>次在<code>a[0]</code>得到最小的元素，第<code>2</code>次循环在<code>a[1]</code>得到第二小的元素….，第<code>n-1</code>次在<code>a[n-2]</code>得到倒数第二小的元素。</p>
 <blockquote>
 <p>第一次外层循环，<code>j</code>的取值范围为<code>（0，n-2）</code>，找到<code>（0，n-1）</code>上的最小值，放到<code>a[0]</code><br>第二次外层循环，<code>j</code>的取值范围为<code>（1，n-2）</code>，找到<code>（1，n-1）</code>上的最小值，放到<code>a[1]</code><br>第二次外层循环，<code>j</code>的取值范围为<code>（2，n-2）</code>，找到<code>（2，n-1）</code>上的最小值，放到<code>a[2]</code><br>….</p>
 </blockquote>
@@ -407,27 +392,15 @@
 <p>假设外层循环从 <code>0</code>到<code>n-2</code></p>
 <p>i = 0， &#8195;&#8195;    j 从 <code>n - 2</code>递减到<code>0</code>   &#8195;&#8195;&#8195;   ==&gt;  <code>a[0]</code><br>i = 1，  &#8195;&#8195;   j 从 <code>n - 2</code>递减到<code>1</code>   &#8195;&#8195;&#8195;   ==&gt;  <code>a[0],a[1]</code><br>…<br>i = n-2， &#8195;  j 从 <code>n - 2</code>递减到<code>n-2</code>   &#8195;&#8195;    ==&gt;  <code>a[0],a[1]...a[n-1]</code></p>
 </blockquote>
-<ul>
-<li>#####<font color="colorful">算法分析：</font> </li>
-</ul>
-<p>最好时间复杂度：<code>O(n)</code><br>当所给的数组全部已经排序好的时候，此时外层循环只有一次机会满足，内层循环只会循环一次 ,<code>1 x (n - 1)</code>。  </p>
+<h5 id="算法分析："><a href="#算法分析：" class="headerlink" title="算法分析："></a><font color="colorful">算法分析：</font></h5><p>最好时间复杂度：<code>O(n)</code><br>当所给的数组全部已经排序好的时候，此时外层循环只有一次机会满足，内层循环只会循环一次 ,<code>1 x (n - 1)</code>。  </p>
 <p>最坏时间复杂度：<code>O(n^2)</code></p>
 <p><br><br></p>
-<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><ul>
-<li>#####<font color="colorful">算法实现：</font> </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public static void insertionSort(int[] a)&#123;</div><div class="line"></div><div class="line">    int n = a.length;</div><div class="line">    for (int i = 1; i &lt; n; i++)&#123;</div><div class="line">        for (int j = i - 1; j &gt;= 0; j--)&#123;</div><div class="line">            if (a[j ] &lt;= a[j + 1])</div><div class="line">                break;</div><div class="line">            int temp = a[j];</div><div class="line">            a[j] = a[j + 1];</div><div class="line">            a[j + 1] = temp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>#####<font color="colorful">算法思路：</font>  </li>
-</ul>
-<p>把数组分为<code>A</code>和<code>B</code>两部分（假想的），<code>A</code>中的元素永远是排序好的，然后把<code>B</code>中的元素从左到右不断插入<code>A</code>中，插入之后，要把<code>A</code>中，从插入位置到结尾的元素整节往后挪一个位置（<code>A</code>整体也扩大了一个位置），等到<code>B</code>把所有元素都插到了<code>A</code>中，也就是<code>A</code>等于整个数组的长度时，数组也就排序好了。  </p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><h5 id="算法实现：-1"><a href="#算法实现：-1" class="headerlink" title="算法实现："></a><font color="colorful">算法实现：</font></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public static void insertionSort(int[] a)&#123;</div><div class="line"></div><div class="line">    int n = a.length;</div><div class="line">    for (int i = 1; i &lt; n; i++)&#123;</div><div class="line">        for (int j = i - 1; j &gt;= 0; j--)&#123;</div><div class="line">            if (a[j ] &lt;= a[j + 1])</div><div class="line">                break;</div><div class="line">            int temp = a[j];</div><div class="line">            a[j] = a[j + 1];</div><div class="line">            a[j + 1] = temp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="算法思路：-1"><a href="#算法思路：-1" class="headerlink" title="算法思路："></a><font color="colorful">算法思路：</font></h5><p>把数组分为<code>A</code>和<code>B</code>两部分（假想的），<code>A</code>中的元素永远是排序好的，然后把<code>B</code>中的元素从左到右不断插入<code>A</code>中，插入之后，要把<code>A</code>中，从插入位置到结尾的元素整节往后挪一个位置（<code>A</code>整体也扩大了一个位置），等到<code>B</code>把所有元素都插到了<code>A</code>中，也就是<code>A</code>等于整个数组的长度时，数组也就排序好了。  </p>
 <p>所以这里外层循环应该循环<code>B</code>，内层循环用来将插入位置和元素原来位置之间的元素整体移动一个位置，<code>A</code>中的元素个数从<code>1</code>依次增大。</p>
 <p>外层循环<code>i</code>代表<code>B</code>数组的元素下标，内层循环<code>j</code>代表数组<code>A</code>的元素下标。每一次外层循环中，将<code>B</code>中的元素从右到左，依次比较，两两交换，又因为<code>A</code>中的元素之前是有序的，每进行一次两两交换，都相当于把<code>A</code>从交换位置开始到结尾那段有序的向后挪了一个位置。</p>
 <p><img src="/2017/11/16/排序算法/1.PNG" alt=""> </p>
-<ul>
-<li>#####<font color="colorful">算法分析：</font> </li>
-</ul>
-<p>最好时间复杂度：<code>O(n)</code><br>当所给的数组全部已经排序好的时候，内层循环每次都不需要循环，只需与<code>A</code>的最后一个元素比较一次即可退出 ,<code>（n-1）x 1</code>。  </p>
+<h5 id="算法分析：-1"><a href="#算法分析：-1" class="headerlink" title="算法分析："></a><font color="colorful">算法分析：</font></h5><p>最好时间复杂度：<code>O(n)</code><br>当所给的数组全部已经排序好的时候，内层循环每次都不需要循环，只需与<code>A</code>的最后一个元素比较一次即可退出 ,<code>（n-1）x 1</code>。  </p>
 <p>最坏时间复杂度：<code>O(n^2)</code><br>当所给数组是反向排序的时候，内层循环每次都要从<code>A</code>的末尾比较并交换到<code>A</code>的开头。</p>
 
       
@@ -602,7 +575,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序"><span class="nav-number">2.</span> <span class="nav-text">插入排序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#算法实现："><span class="nav-number">1.0.0.1.</span> <span class="nav-text">算法实现：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法思路："><span class="nav-number">1.0.0.2.</span> <span class="nav-text">算法思路：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法分析："><span class="nav-number">1.0.0.3.</span> <span class="nav-text">算法分析：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序"><span class="nav-number">2.</span> <span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#算法实现：-1"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">算法实现：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法思路：-1"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">算法思路：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法分析：-1"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">算法分析：</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
