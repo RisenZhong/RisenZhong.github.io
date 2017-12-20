@@ -91,7 +91,7 @@
 
 其中的handler是一个HandlerMethod对象，而HandlerMethod里面保存了这次这个请求对应的Controller中对应的方法的Meth">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springMVC是如何根据Url找到对应的Controller的">
+<meta property="og:title" content="springMVC如何根据Url找到对应的Controller的对应方法">
 <meta property="og:url" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/index.html">
 <meta property="og:site_name" content="Eason's blog">
 <meta property="og:description" content="首先一个请求来到DispacherServlet，DispacherServlet会调用一个getHandler方法获得一个HandlerExecutionChain对象，这个对象主要包含了handler和interceptors两个属性。
@@ -118,9 +118,9 @@
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/19.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/20.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/21.PNG">
-<meta property="og:updated_time" content="2017-12-20T08:19:34.579Z">
+<meta property="og:updated_time" content="2017-12-20T08:41:50.907Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="springMVC是如何根据Url找到对应的Controller的">
+<meta name="twitter:title" content="springMVC如何根据Url找到对应的Controller的对应方法">
 <meta name="twitter:description" content="首先一个请求来到DispacherServlet，DispacherServlet会调用一个getHandler方法获得一个HandlerExecutionChain对象，这个对象主要包含了handler和interceptors两个属性。
 
 其中的handler是一个HandlerMethod对象，而HandlerMethod里面保存了这次这个请求对应的Controller中对应的方法的Meth">
@@ -158,7 +158,7 @@
 
 
 
-  <title> springMVC是如何根据Url找到对应的Controller的 | Eason's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> springMVC如何根据Url找到对应的Controller的对应方法 | Eason's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -309,7 +309,7 @@
             
             
               
-                springMVC是如何根据Url找到对应的Controller的
+                springMVC如何根据Url找到对应的Controller的对应方法
               
             
           </h1>
@@ -374,7 +374,7 @@
 
           
           
-             <span id="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/" class="leancloud_visitors" data-flag-title="springMVC是如何根据Url找到对应的Controller的">
+             <span id="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/" class="leancloud_visitors" data-flag-title="springMVC如何根据Url找到对应的Controller的对应方法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -434,6 +434,7 @@
 <p>这里的directPathMatches是一个数据，所以说可能会有多个RequestMappingInfo对象，也就说等下也会有多个HandlerMethod对象，所以这里定义了一个Matches数组，等下会在这个数组里面操作，找到最合适的HandlerMethod。<br>然后我们看到上面那张图，里面就有我们最关键的方法了，就是addMatchingMappings(directPathMatches, matches, request)，就是用它来根据RequestMappingInfo找到HandlerMethod。我们看下这个方法。</p>
 <p><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/17.PNG" alt=""><br><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/18.PNG" alt=""><br><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/19.PNG" alt=""><br><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/20.PNG" alt=""><br><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/21.PNG" alt=""></p>
 <p>至此，我们也终于得到了HandlerMethod对象，然后DispatcherServlet会将它交给HandlerAdater对象，然后执行反射调用。从而完成这个controller方法的调用。</p>
+<p>由上也看到所有的HandlerMethod对象在容器初始化的时候，就放到一个Map里面存了起来。</p>
 
       
     </div>
@@ -505,7 +506,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/12/19/springMVC是如何根据Url找到对应的Controller的/"
-           data-title="springMVC是如何根据Url找到对应的Controller的" data-url="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/">
+           data-title="springMVC如何根据Url找到对应的Controller的对应方法" data-url="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/">
       </div>
     
   </div>
