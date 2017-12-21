@@ -128,7 +128,7 @@ DispatcherServlet调用自身的ge">
 <meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/19.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/20.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/21.PNG">
-<meta property="og:updated_time" content="2017-12-21T12:46:28.730Z">
+<meta property="og:updated_time" content="2017-12-21T12:57:39.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springMVC是如何进行controller的方法调用的">
 <meta name="twitter:description" content="上一篇讲到从HandlerMapping里面获得了一个HandlerMethod对象，然后交给HandlerAdater去调用，这一篇我来研究下，HandlerAdater是如何进行调用的。
@@ -459,6 +459,9 @@ DispatcherServlet调用自身的ge">
 <p>这里看到它的处理方法很简单，就是将返回值放到一个容器里面装起来。然后就算处理完了，这样Controller方法就算调用完了。但是不同于上面的情况，使用Jsp的时候需要返回一个ModelAndView对象给DispatherServlet去处理。现在我们回到RequestMappingHandlerAdapter，他是调用自身的一个方法去根据刚刚的ModelAndViewContainer来初始化一个ModelAndView对象，然后返回给DispatcerServlet。</p>
 <p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/21.PNG" alt=""></p>
 <p>由此HandlerAdapter的使命也算完成了。</p>
+<p><br><br><br>至此总结下上面两种方式执行的区别：</p>
+<p>使用ResponseBody注解时，会匹配到RequestResponseBodyMethodProcessor这个返回值处理器，而这个处理器会用HttpMessageConverter直接处理返回值，将返回值写入到response的流里面，然后就相当于处理完了，也不需要返回ModelAndView对象给DispatcherServlet了。</p>
+<p>而使用Jsp时，则会匹配到ViewNameMethodReturnValueHandler这个返回值处理器，最后需要返回一个ModelAndVIew对象给DispatcherServlet去进行视图渲染等工作。关于DispatcherServlet时如何处理这个ModelAndView对象的，在接下来的文章有机会再继续。</p>
 
       
     </div>
