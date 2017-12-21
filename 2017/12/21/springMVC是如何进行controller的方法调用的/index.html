@@ -116,19 +116,19 @@ DispatcherServlet调用自身的ge">
 <meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/7.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/8.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/9.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/10.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/11.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/12.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/13.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/14.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/15.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/16.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/17.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/18.PNG">
+<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/10.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/11.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/12.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/13.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/14.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/15.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/16.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/17.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/18.png">
 <meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/19.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/20.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/21/springMVC是如何进行controller的方法调用的/21.PNG">
-<meta property="og:updated_time" content="2017-12-21T12:57:39.008Z">
+<meta property="og:updated_time" content="2017-12-21T13:08:12.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springMVC是如何进行controller的方法调用的">
 <meta name="twitter:description" content="上一篇讲到从HandlerMapping里面获得了一个HandlerMethod对象，然后交给HandlerAdater去调用，这一篇我来研究下，HandlerAdater是如何进行调用的。
@@ -432,24 +432,24 @@ DispatcherServlet调用自身的ge">
 <p>看到只有当handler对象类型为HandlerMethod的时候，才会适配到这个adapter。而其他adapter适配的handler对象类型可以自行查看源码。</p>
 <p>接下来我分两种情况分析下RequestMappingHandlerAdapter对HandlerMethod的调用情况。一种是使用@ResponseBody注解，另外一种是用jsp作为视图层。</p>
 <h5 id="1-使用-ResponseBody注解"><a href="#1-使用-ResponseBody注解" class="headerlink" title="1. 使用@ResponseBody注解"></a>1. 使用@ResponseBody注解</h5><p>我们跟着上面DispatcherServlet的代码进入到RequestMappingHandlerAdapter的handle()方法看下。我们跟着代码调用，找到controller的方法实际调用的地方。</p>
-<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/7.PNG" alt=""><br><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/8.PNG" alt=""><br><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/9.PNG" alt=""><br><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/10.PNG" alt=""></p>
+<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/7.PNG" alt=""><br><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/8.PNG" alt=""><br><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/9.PNG" alt=""><br><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/10.png" alt=""></p>
 <p>看到上面最后红色标注的两个方法，第一个方法主要是反射调用controller方法，我们进入到第二方法看下，他是如何处理返回值的。</p>
-<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/11.PNG" alt=""></p>
+<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/11.png" alt=""></p>
 <p>再来看下他是如何选择这个返回值处理器的。</p>
-<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/12.PNG" alt=""></p>
+<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/12.png" alt=""></p>
 <p>当使用@ResponseBody注解时，他会匹配到RequestResponseBodyMethodProcessor作为返回值处理器。我们看一下是怎么匹配的。</p>
-<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/13.PNG" alt=""></p>
+<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/13.png" alt=""></p>
 <p>这里看到他就是根据是否使用了ResponseBody注解来判断是否支持。</p>
 <p>接下来我们再看下这个RequestResponseBodyMethodProcessor是如何处理返回值的。</p>
-<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/14.PNG" alt=""></p>
+<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/14.png" alt=""></p>
 <p>关于HttpMessageConverter的介绍可以看到<a href="https://docs.spring.io/spring/docs/5.0.2.RELEASE/spring-framework-reference/integration.html#rest-message-conversion" target="_blank" rel="external">这里</a></p>
 <p>我们具体看下这个方法是如何处理的。</p>
-<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/15.PNG" alt=""></p>
+<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/15.png" alt=""></p>
 <p>首先这个方法会根据request和返回值的类型确定一种mediaType，这里我测试了一下，当使用ResponseBody注解时，如果返回值是String，mediaType会匹配到text/plain。然后根据这个mediaType会匹配到StringHttpMessageConverter。</p>
-<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/16.PNG" alt=""></p>
+<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/16.png" alt=""></p>
 <p>如果是返回值不是String，而是pojo对象，mediaType会匹配到application/json。然后根据这个mediaType会匹配到MappingJackson2HttpMessageConverter。</p>
-<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/17.PNG" alt=""></p>
-<p>当启用springMVC配置时，容器默认有的HttpMessageConverter如下图<br><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/18.PNG" alt=""></p>
+<p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/17.png" alt=""></p>
+<p>当启用springMVC配置时，容器默认有的HttpMessageConverter如下图<br><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/18.png" alt=""></p>
 <p>这样处理完返回值之后在DispactherServlet得到的ModelAndView对象是空值，因为已经不需要再进行视图解析了，需要的接口数据已经在HttpMessageConverter里面写到Response的输出流了，DispatcherServlet接下来也不需要视图渲染等操作了。</p>
 <h5 id="2-使用Jsp"><a href="#2-使用Jsp" class="headerlink" title="2. 使用Jsp"></a>2. 使用Jsp</h5><p>而如果我们是使用jsp，反射调用Controller方法获得返回值之前的步骤都跟上面大体一样。而获得返回值后，他就会匹配到ViewNameMethodReturnValueHandler这个返回值处理器。下面是这个返回值处理器的匹配规则。</p>
 <p><img src="/2017/12/21/springMVC是如何进行controller的方法调用的/19.PNG" alt=""></p>
