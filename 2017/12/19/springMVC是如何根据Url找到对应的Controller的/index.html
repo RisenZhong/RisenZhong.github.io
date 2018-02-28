@@ -107,10 +107,8 @@
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/23.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/24.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/25.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/11.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/12.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/13.PNG">
-<meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/14.PNG">
+<meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/26.PNG">
+<meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/27.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/15.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/16.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/17.PNG">
@@ -118,7 +116,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/28.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/20.PNG">
 <meta property="og:image" content="http://yoursite.com/2017/12/19/springMVC是如何根据Url找到对应的Controller的/29.PNG">
-<meta property="og:updated_time" content="2018-02-28T10:18:58.032Z">
+<meta property="og:updated_time" content="2018-02-28T11:59:44.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springMVC如何根据Url找到对应的Controller的对应方法">
 <meta name="twitter:description" content="首先一个请求来到DispacherServlet，DispacherServlet会调用一个getHandler方法获得一个HandlerExecutionChain对象，这个对象主要包含了handler和interceptors两个属性。
@@ -426,7 +424,7 @@
 <p>这里看到关键代码<code>List&lt;T&gt; directPathMatches = this.mappingRegistry.getMappingsByUrl(lookupPath)</code>，他根据url获取了一个directPathMatches对象，而这个directPathMatches对象是一个LinkedList，里面装的是RequestMappingInfo对象。</p>
 <p><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/24.PNG" alt=""></p>
 <p>而这个RequestMappingInfo对象就是我们的关键，后面他会根据这个RequestMappingInfo对象去得到HandlerMethod对象。我们看到这个RequestMappingInfo保存了这次请求的许多信息。现在看一下他是如何获取这个RequestMappingInfo对象的。</p>
-<p><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/25.PNG" alt=""><br><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/11.PNG" alt=""><br><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/12.PNG" alt=""><br><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/13.PNG" alt=""><br><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/14.PNG" alt=""></p>
+<p><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/25.PNG" alt=""><br><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/26.PNG" alt=""><br><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/27.PNG" alt=""></p>
 <p>可以看到所有的RequestMappingInfo对象，是存在内部类的一个属性中。而AbstractHandlerMethodMapping有一个属性就是这个内部类对象。</p>
 <p><img src="/2017/12/19/springMVC是如何根据Url找到对应的Controller的/15.PNG" alt=""></p>
 <p>至此我们已经得到了这个RequestMappingInfo对象，接下来看下如何根据这个对象来获取HandlerMethod对象。</p>
