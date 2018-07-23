@@ -87,13 +87,19 @@
 
 
 
+<meta name="description" content="1.简介本参考手册描述了Python语言，它并不是一篇教程。
+虽然我试图尽可能精确，但除了句法和词法分析，其他我都采用英文而不是正式语言规范。这应该使普通读者更容易理解本文档，但会留下含糊不清的地方。因此，如果你来自火星，想着自己根据这篇文档重新实现Python，你可能需要猜测一些事实，并且最后你可能实现了一种完全不同的语言。另一种情况，如果你正在使用Python，然后想知道Python一些地方的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-3.6.4文档[译]">
 <meta property="og:url" content="http://yoursite.com/2018/03/07/python-3-6-4文档-译/index.html">
 <meta property="og:site_name" content="Eason's blog">
-<meta property="og:updated_time" content="2018-03-07T03:01:51.517Z">
+<meta property="og:description" content="1.简介本参考手册描述了Python语言，它并不是一篇教程。
+虽然我试图尽可能精确，但除了句法和词法分析，其他我都采用英文而不是正式语言规范。这应该使普通读者更容易理解本文档，但会留下含糊不清的地方。因此，如果你来自火星，想着自己根据这篇文档重新实现Python，你可能需要猜测一些事实，并且最后你可能实现了一种完全不同的语言。另一种情况，如果你正在使用Python，然后想知道Python一些地方的">
+<meta property="og:updated_time" content="2018-07-23T12:18:14.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-3.6.4文档[译]">
+<meta name="twitter:description" content="1.简介本参考手册描述了Python语言，它并不是一篇教程。
+虽然我试图尽可能精确，但除了句法和词法分析，其他我都采用英文而不是正式语言规范。这应该使普通读者更容易理解本文档，但会留下含糊不清的地方。因此，如果你来自火星，想着自己根据这篇文档重新实现Python，你可能需要猜测一些事实，并且最后你可能实现了一种完全不同的语言。另一种情况，如果你正在使用Python，然后想知道Python一些地方的">
 
 
 
@@ -350,7 +356,79 @@
       
 
       
-        
+        <h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>本参考手册描述了Python语言，它并不是一篇教程。</p>
+<p>虽然我试图尽可能精确，但除了句法和词法分析，其他我都采用英文而不是正式语言规范。这应该使普通读者更容易理解本文档，但会留下含糊不清的地方。因此，如果你来自火星，想着自己根据这篇文档重新实现Python，你可能需要猜测一些事实，并且最后你可能实现了一种完全不同的语言。另一种情况，如果你正在使用Python，然后想知道Python一些地方的具体规则，你肯定可以从这里找到答案。如果你希望看到更正式的语言定义，也许你可以自己动手，或者发明一台克隆机器:-)。</p>
+<p>在语言参考文档加入太多实现细节是很危险的–实现有可能会变，而且同一种语言的其他实现也可能会不同。另一方面，CPython是一种广泛使用的Python实现（尽管他的替代实现持续得到支持），他的一些怪异地方有时值得提起，特别他在实现的时候强加了一些额外的限制。因此，你会发现通篇文章遍布一些“实现说明”。</p>
+<p>每种Python实现都有一些标准的内建库。这些都记录在了<a href="https://docs.python.org/3/library/index.html#library-index" target="_blank" rel="external">The Python Standard Library</a>中。本文会提及一些内建模块，他们对语言定义有一些重要的影响。</p>
+<h5 id="1-1-替代实现"><a href="#1-1-替代实现" class="headerlink" title="1.1 替代实现"></a>1.1 替代实现</h5><p>虽然目前有一种Python实现是最受欢迎的，但一些不同的受众对一些替代实现也佷感兴趣。</p>
+<p>已知的实现包括：</p>
+<p>CPython<br>&emsp;&emsp;这是Python原始和最多维护的实现，用C语言编写。新的语言特新通常会最先出现在这里。</p>
+<p>JPython<br>&emsp;&emsp;用Java实现的Python。这个实现可以在 Java应用程序当作脚本来用，或者根据Java类库用以构建应用程序。还经常用于测试Java库。更多信息请看<a href="http://www.jython.org" target="_blank" rel="external">the Jython website</a>。</p>
+<p>Python for .NET<br>&emsp;&emsp;这个实现事实上是使用了CPython，但它是一个托管的.NET应用程序，并且提供了.NET类库。它由Brian Lloyd创建。更多详情，请看<a href="https://pythonnet.github.io" target="_blank" rel="external">Python for .NET home page</a>。</p>
+<p>IronPython<br>&emsp;&emsp;Python .NET的替代实现。不同于Python .NET，这是一个完整的Python实现，他生成IL，并且将Python代码直接编译成.NET程序集。它是由Jim Hugunin创建的，Jython的原始作者。更多信息，请看<a href="http://ironpython.net/" target="_blank" rel="external">the IronPython website</a></p>
+<p>PyPy<br>&emsp;&emsp;此实现完全用Python编写。它提供了一些其他实现没有的高级特性，比如说无堆栈支持和即时编译器。该项目的目标之一是通过让修改解释器变得更简单（因为他是用Python编写的），来让对语言本身进行试验变得更加方便。其他信息可参考<a href="http://pypy.org" target="_blank" rel="external">the PyPy project’s home page</a>。</p>
+<p>这些实现每一个都与本文所描述的语言有一些不同，抑或是引入了Python标准文档之外的特定信息。请参阅特定于实现的文档，以确定您需要了解的关于您正在使用的实现的其他内容。</p>
+<h5 id="1-2-符号"><a href="#1-2-符号" class="headerlink" title="1.2 符号"></a>1.2 符号</h5><p>词法分析和句法的描述使用修改后的BNF语法表示法。采用如下定义形式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name      ::=  lc_letter (lc_letter | <span class="string">'_'</span>)* </div><div class="line">lc_letter ::=  <span class="string">'a'</span>...<span class="string">'z'</span></div></pre></td></tr></table></figure>
+<p>第一行表示name是一个lc_letter后面跟着零或多个lc_letter和下划线的序列。一个lc_letter依次表示a到z的任何单个字符。（本文词法和语法规则的名称定义实际上也按照这种规则。）</p>
+<p>每条规则以名字（规则的名称）和<code>::=</code>开始。竖线（|）用以分割各种选择；它是这种记法最不受约束的运算符。星号（ <em> ）表示前一项零次或多次重复；类似地，加号（+）表示一次或多次重复，方括号（[])中的短语表示零次或一次出现（换句话说，所包含的短语是可选的）。</em>和+运算符尽可能紧密地绑定；圆括号用来分组。文字字符串用引号引起来。空格只用来作分割符。规则通常包含在一行中，具有许多替代方案的规则可以在第一个开始之后用竖线交替排列。</p>
+<p>在词汇的定义中（如上面的例子），有另外两个使用惯例：由三个分隔点与两个字符组成的字符串表示这两个字符给定的范围（包含这两个字符）中的ASCII中的任意单个字符。<br>尖括号中的短语（&lt;…&gt;）给出了所定义符号的非正式描述；例如，如果需要，这还可以用来描述“控制字符”的概念。</p>
+<p>虽然符号的使用大体上都一样，但是在词法定义和句法定义之间的意义会有很大不同：词法定义在输入源的单个字符上操作，句法定义在词法分析产生的token流上操作。下一章（“词法分析”）所有的BNF用法都是词法定义；接下来的章节的使用是句法定义。</p>
+<h3 id="2-词法分析（略）"><a href="#2-词法分析（略）" class="headerlink" title="2. 词法分析（略）"></a>2. 词法分析（略）</h3><h3 id="3-数据模型"><a href="#3-数据模型" class="headerlink" title="3. 数据模型"></a>3. 数据模型</h3><h5 id="3-1-对象，值和类型"><a href="#3-1-对象，值和类型" class="headerlink" title="3.1 对象，值和类型"></a>3.1 对象，值和类型</h5><p>对象是Python对数据的抽象。Python程序中的所有数据都由对象或对象中的关系来表示。（从某种意义上说，为了符合Von Neumann的“存储程序计算机”模型，代码也是用对象来表示的。）</p>
+<p>每个对象都有一个标识，类型和值。对象的标识已经创建就不再改变；你可以想象成它是对象的内存地址。is操作符比较两个对象的标识符；id()函数返回一个代表这个标识的整数。</p>
+<p><strong>CPython 实现细节：</strong>在CPython中，id(x)表示x的内存地址。</p>
+<p>对象的类型决定了对象所能进行的操作（比如，对象有没有长度属性）并且定义了这种类型的对象的可能取值。type()函数返回一个对象的类型（这个类型本身也是一个对象）。就如对象的标识一样，对象的类型也是不可变的。</p>
+<p>一些对象的值是可变的。值可变的对象我们称作mutable；对象的值如果一经创建就不能改变我们称作immutable。（一个不可变的容器，他的引用指向一个可变对象，当这个可变对象的值改变的时候容器的值也改变了；然而我们仍然将这个容器看作是不可变的，因为它包含的对象集合是不可变的。因此不可变性并不根据对象值来判断，它是更微妙的。）所有对象的可变性是根据他的类型来决定；例如数值，字符串和元组是不可变的，字典和集合是可变的。</p>
+<p>对象从不显式地进行销毁；然而，当它们变成不可达的时候，他们可能被垃圾回收机制回收。实现允许推迟垃圾回收或是完全忽略它—— 垃圾回收机制是如何实现的影响了实现的质量，只要机制不收集可达的对象。</p>
+<p><strong>CPython 实现细节：</strong>CPython目前使用引用计数方案（可选的）延迟检测循环链接的垃圾，一旦对象变成不可达，大多数就会被收集，但是不保证会收集包含循环引用的的垃圾。欲知关于如何控制循环垃圾回收的内容，请看本文档<a href="">gc</a>这一模块。其他实现的行为也会不同，并且CPython也会继续变化。不要依赖于当对象不可达时对象会立即终止（所以你应该总是显式关闭文档流）。</p>
+<p>注意使用实现追踪或者调试工具可能会使对象保持活动状态，这通常是可收集的。还有使用“try…except”语句捕获异常也可能会使对象保持活动状态。</p>
+<p>一些对象包含“外部”资源的引用比如打开一个文件流或者窗口。需要理解的是当进行垃圾回收的时候资源需要被释放，但是因为垃圾回收是不保证会发生的，这些对象也提供了显式途径去释放外部资源，通常是close()方法。强烈推荐程序显式去关闭这样的对象。“try…finally”语句或者“with”语句都为此提供了简单的途径。</p>
+<p>一些对象包含了其他对象的引用；这些被称作容器。一些容器的例子比如元组，集合和字典。容器的值部分为引用。大多数情况，当我们说容器的值时，指的是具体值，而不是所包含对象的的值的标识；然而，当我们讨论容器的可变性时，只是指容器直接包含的对象的标识。所以，一个不可变容器（比如元组）包含了一个可变对象，当这个可变对象的值改变时容器的值就改变了。</p>
+<p>类型影响了对象的所有行为。甚至某种意义上影响了对象标识的重要性：对于不可变类型，计算新值的操作可能实际上会返回一个已经存在的对象的引用，这个对象具有相同的类型和值，但对于可变类型，这是不允许的。比如，经过<code>a = 1; b = 1</code>语句之后，a和b可能指向值为1的不同对象，这依赖于具体的实现，但是在<code>c = []; d = []</code>语句之后，c和d保证会指向两个不同的，独一无二的，新创建的空集合。（注意<code>c = d = []</code>语句会为c和d分配相同的对象。）</p>
+<h5 id="3-2-标准类型层级"><a href="#3-2-标准类型层级" class="headerlink" title="3.2 标准类型层级"></a>3.2 标准类型层级</h5><p>下面列出了Python内建的类型。扩展模块（根据具体实现，可以用c，java，或其他语言编写）可以定义额外的类型。未来的Python版本可能会添加新的类型（例如，有理数，高效整型数组，等等），但这些添加通常通过标准库来提供。</p>
+<p>下面一些类型描述包含了一个列出“特殊属性”的段落。这些属性是为实现本身提供的，不适于普通使用。他们的定义在未来可能会变。</p>
+<p><strong>None</strong><br>&emsp;&emsp;这个类型只有一个值。这个对象是单例的。该对象可以通过内置的名称Name来访问。很多情况它用来表示值为空，比如，函数不显氏返回任何东西可以返回None。他的实际值是false。</p>
+<p><strong>NotImplemented</strong><br>&emsp;&emsp;这个类型只有一个值。这个对象是单例的。该对象可以通过内置的名称NotImplemented来访问。数字方法和许多比较函数，当提供的操作数没有有实现这种操作时应该返回这个值。（解释器接着会进行反射操作，或者根据操作符做出一些反馈。）它的实际值是true。</p>
+<p><strong>Ellipsis</strong><br>&emsp;&emsp;这个类型有唯一值。此对象是单例的。该对象可通过<code>...</code>符号或者内置名称Ellipsis来访问。他的实际值是true。</p>
+<p><strong>numbers.Number</strong><br>&emsp;&emsp;这些类型由数字符号创建，并作为算术运算符和内置算术函数的返回值。数字对象是不可变的；一经创建他们的值永远不会改变。Python中的数字与数学数字非常相关，当也受限于计算机的表示形式。</p>
+<p>Python区分整型，浮点型，和复数：</p>
+<blockquote>
+<p><strong>numbers.Integral</strong></p>
+<blockquote>
+<p>代表整数数字的集合。（正数和负数）</p>
+<p>Python有两种整型：  </p>
+<p><strong>整数*（int）</strong><br>这些代表了无限范围的整数，仅受限于可用（虚拟）内存。为了进行移位和掩码操作，假定了二进制的表示法，负数用2的补码的变体表示，这产生了左边延伸出无限符号位串的错觉。</p>
+<p><strong>布尔值（bool）</strong><br>这些代表真假值False和True。这两个对象所代表的值False和值是布尔类型的两个仅有的值。布尔类型是整型的子类，几乎所有的上下文中，布尔值的行为就分别像0和1，例外是当转换为字符串的时候，分别返回字符串“False”和“True’。</p>
+<p>整数表示规则旨在给出涉及负整数的移位和掩码操作的最有意义的解释。</p>
+</blockquote>
+<p><strong>numbers.Real（float）</strong></p>
+<blockquote>
+<p>这些代表了机器级别的双精度浮点数。对于可接受的范围和处理溢出，您将受制于底层机器结构（以及C或Java实现）。Python不支持单精度浮点数；使用单精度浮点数的原因一般是为了节省处理器和内存使用，这些在Python中与对象的开销相比微乎其微，所以没有理由使用两种浮点数使语言变得复杂。</p>
+</blockquote>
+<p><strong>numbers.Complex（complex）</strong></p>
+<blockquote>
+<p>将复数表示为一对机器级别的双精度浮点数。浮点数的注意事项在此也适用。复数z的实部和虚部可以通过只读属性z.real和z.imag来获得。</p>
+</blockquote>
+</blockquote>
+<p><strong>Sequences</strong><br>&emsp;&emsp;这些对象代表了有限的有序集合，集合由非负数作索引。内置函数len()返回一个sequence的项目数。当sequence的长度为n，集合的索引包括0，1，…，n-1。获取项目i可通过a[i]。</p>
+<p>sequences也支持切片操作：a[i:j]选择索引为k的项目，使得i &lt;= k &lt; j。当用作表达式时，切片也是sequence类型。这表示索引已经重新编号了，从0开始。</p>
+<p>一些Sequences对象还可以通过第三个“步长”参数来支持“扩展切片”：a[i:j:k]选择所有索引为x的项目，其中x = i + n*k，n &gt;= 0 并且 i &lt;= x &lt; j。</p>
+<p>sequences通过可变性分类：</p>
+<blockquote>
+<p>不可变的序列：</p>
+<blockquote>
+<p>不可变序列对象一经创建就无法再改变。（如果此对象包含其他对象的引用，这些对象可能是可变的并且发生了改变；然而不可变对象直接引用的对象集合不能改变。）<br>下列类型都是不可变序列：<br>Strings  </p>
+<blockquote>
+<p>string是一串代表Unicode字符的序列。在U+0000 - U+10FFFF中的所有字符都可以用字符串表示。Python没有char类型；而是，字符串中的每个字符都代表了长度为1的string对象。内置函数ord()将字符从字符串形式转换为范围为0 - 10FFFF的整数；chr()函数将范围为0 - 10FFFF的整数转换为相应的长度为1的字符串对象。str.encode()函数可以根据指定的文字编码将str转为bytes，bytes.decode()可以实现与之相反的操作。</p>
+</blockquote>
+<p>Tuples</p>
+<blockquote>
+<p>元组的元素可以是任意的Python对象。两个或多个元素的用逗号分隔的list来表示。只含一个元素的元组可以用括号表达式并在元素后面加上一个逗号来表示（括号表达式不能用来创建一个元素的元组，因为这样的表达式可以用来作分组）。没有元素的元组可以用一对括号表示。<br>Bytes<br>bytes对象是一个不可变的数组。8位字节的对象，代表0 &lt;= x &lt; 256 内的整数。Bytes文字（比如 b’abc’）和内置的bytes()构造函数可以用来生成bytes对象。并且，bytes对象通过decode()函数解码成字符串。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>to be continue….</p>
+
       
     </div>
 
@@ -380,8 +458,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/28/test/" rel="next" title="test">
-                <i class="fa fa-chevron-left"></i> test
+              <a href="/2017/12/21/springMVC是如何进行controller的方法调用的/" rel="next" title="springMVC是如何进行controller的方法调用的">
+                <i class="fa fa-chevron-left"></i> springMVC是如何进行controller的方法调用的
               </a>
             
           </div>
@@ -439,8 +517,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -453,7 +540,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -496,6 +583,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-简介"><span class="nav-number">1.</span> <span class="nav-text">1.简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-替代实现"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1 替代实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-符号"><span class="nav-number">1.0.2.</span> <span class="nav-text">1.2 符号</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-词法分析（略）"><span class="nav-number">2.</span> <span class="nav-text">2. 词法分析（略）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-数据模型"><span class="nav-number">3.</span> <span class="nav-text">3. 数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-对象，值和类型"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 对象，值和类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-标准类型层级"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2 标准类型层级</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
